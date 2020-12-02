@@ -101,7 +101,7 @@ fn part_two(entries: &Vec<Entry>) {
             None => continue,
         };
 
-        if (p1 == entry.policy.letter || p2 == entry.policy.letter) && p1 != p2 {
+        if (p1 == entry.policy.letter) ^ (p2 == entry.policy.letter) {
             count_valid_entries += 1;
         }
     }
