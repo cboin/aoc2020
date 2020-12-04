@@ -24,7 +24,7 @@ fn validate_fields(s: &String) -> bool {
         static ref IYR: Regex = Regex::new(r"iyr:(\d{4})\b").unwrap();
         static ref EYR: Regex = Regex::new(r"eyr:(\d{4})\b").unwrap();
         static ref HGT: Regex = Regex::new(r"hgt:(\d{2,3})(cm|in)\b").unwrap();
-        static ref HCL: Regex = Regex::new(r"hcl:#(?:[0-9a-fA-F]{3}){1,2}\b").unwrap();
+        static ref HCL: Regex = Regex::new(r"hcl:#([0-9a-f]{6})\b").unwrap();
         static ref ECL: Regex = Regex::new(r"ecl:(amb|blu|brn|gry|grn|hzl|oth)\b").unwrap();
         static ref PID: Regex = Regex::new(r"pid:(\d{9})\b").unwrap();
     }
