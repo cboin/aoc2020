@@ -82,7 +82,7 @@ fn validate_fields(s: &String) -> bool {
 
         let hgt_unit = match caps.get(2) {
             Some(hgt_unit) => hgt_unit.as_str(),
-            None => "",
+            None => return false,
         };
 
         match hgt_unit {
@@ -120,6 +120,7 @@ fn main() -> io::Result<()> {
         .split("\n\n")
         .map(|p| p.replace("\n", " "))
         .filter(|p| p != "")
+        .filter(|p| p.contains("cm") || p.contains("in"))
         .collect::<Vec<String>>();
 
     println!("[part1] passports count: {}", part_one(&passports));
