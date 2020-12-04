@@ -56,7 +56,7 @@ fn count_trees(world: &Map, direction: (usize, usize)) -> usize {
         .iter()
         .enumerate()
         .filter(|(y, _)| (y % direction.1) == 0)
-        .map(|(y, x)| x.assets[(y * direction.0) % width])
+        .map(|(y, x)| x.assets[(y / direction.1 * direction.0) % width])
         .filter(|x| *x == Asset::Tree)
         .count()
 }
