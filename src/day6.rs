@@ -53,7 +53,13 @@ fn main() -> io::Result<()> {
 
     let mut answers_groups: Vec<Vec<String>> = Vec::new();
     for answer in answers.iter() {
-        answers_groups.push(answer.split("\n").map(|s| s.to_string()).collect());
+        answers_groups.push(
+            answer
+                .split("\n")
+                .map(|s| s.to_string())
+                .filter(|l| l != "")
+                .collect(),
+        );
     }
 
     println!("[part1] {}", part_one(&answers_groups));
