@@ -19,26 +19,26 @@ fn part_one(answers_groups: &Vec<Vec<String>>) -> usize {
 }
 
 fn part_two(answers_groups: &Vec<Vec<String>>) -> usize {
-    answers_groups.iter().fold(0, |acc, group| {
-        let mut positive_answers_group = 0;
-        let mut positive_answers: HashMap<char, usize> = HashMap::new();
-        let group_size = group.len();
+    let mut positive_answers = 0;
+    for answers_group in answers_groups {
+        let group_size = answers_group.len();
+        let mut positive_group_answers: HashMap<char, usize> = HashMap::new();
 
-        for ppl_answer in group {
-            for answer in ppl_answer.chars() {
-                let ans = positive_answers.entry(answer).or_insert(0);
-                *ans += 1;
+        for answers in answers_group {
+            for answer in answers.chars() {
+                let counter = positive_group_answers.entry(answer).or_insert(0);
+                *counter += 1;
             }
         }
 
-        for answer in positive_answers.values() {
-            if *answer == group_size {
-                positive_answers_group += 1
+        for positive_answer in positive_group_answers.values() {
+            if group_size == *positive_answer {
+                positive_answers += 1;
             }
         }
+    }
 
-        acc + positive_answers_group
-    })
+    positive_answers
 }
 
 fn main() -> io::Result<()> {
