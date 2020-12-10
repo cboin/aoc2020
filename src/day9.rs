@@ -53,7 +53,7 @@ fn part_one(windows: &Vec<(&[u64], u64)>) -> u64 {
 }
 
 fn part_two(inputs: &Vec<u64>, target: u64) -> Option<u64> {
-    let t = inputs.to_vec();
+    let t = inputs.clone();
     let mut curr_sum = *t.first().expect("invalid first");
     let mut start = 0;
     let mut i = 1;
